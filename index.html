@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>anima</title>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="format-detection" content="email=no"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <script src="common.js"></script>
+  <script>!function(e){function t(n){if(i[n])return i[n].exports;var r=i[n]={exports:{},id:n,loaded:!1};return e[n].call(r.exports,r,r.exports,t),r.loaded=!0,r.exports}var i={};return t.m=e,t.c=i,t.p="",t(0)}([function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var i=window;t["default"]=i.vl=function(e,t){var n=e||100,r=t||750,a=i.document,d=navigator.userAgent,o=d.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i),l=d.match(/U3\/((\d+|\.){5,})/i),s=l&&parseInt(l[1].split(".").join(""),10)>=80,u=a.documentElement,c=1;if(o&&o[1]>534||s){u.style.fontSize=n+"px";var p=a.createElement("div");p.setAttribute("style","width: 1rem;display:none"),u.appendChild(p);var m=i.getComputedStyle(p).width;if(u.removeChild(p),m!==u.style.fontSize){var v=parseInt(m,10);c=100/v}}var f=a.querySelector('meta[name="viewport"]');f||(f=a.createElement("meta"),f.setAttribute("name","viewport"),a.head.appendChild(f)),f.setAttribute("content","width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1");var h=function(){u.style.fontSize=n/r*u.clientWidth*c+"px"};h(),i.addEventListener("resize",h)},e.exports=t["default"]}]);
+  vl(100, 750);</script>
+  <script type="text/javascript" src="https://a.alipayobjects.com/publichome-static/antBridge/antBridge.min.js"></script>
+  <link rel="stylesheet" href="./index.css"/>
+
+</head>
+<body ontouchstart="">
+<style>
+  html{
+    height: 100%;
+    min-height: 100%;
+  }
+  body{
+    height:100%;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+  .widget-list-panel{
+    position: relative;
+    background: -webkit-linear-gradient(-120deg, #2288CD, #1471B2) top right no-repeat;
+    -webkit-background-size:100%;
+    height: 100%;
+  }
+  .widget-list-panel .header{
+    position:relative;
+    padding-bottom: 32px;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+  }
+  .widget-list-panel h1{
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 300;
+    padding-top: 32px;
+  }
+  .widget-list-panel .header-info{
+    font-size: 17px;
+    line-height: 21px;
+    padding-top: 6px;
+  }
+  .x-bg{
+    position: absolute;
+    width: 50%;
+    min-width: 325px;
+    height: 100%;
+    right: 0;
+    top: 0;
+    background: url('https://os.alipayobjects.com/rmsportal/ZbQiBgorAUacvlC.png') no-repeat right top;
+    background-size: 100% auto;
+    z-index: 1;
+  }
+
+  .widget-list{
+    padding: 0px 15px 15px 0;
+    list-style: none;
+    display:table;
+    table-layout: fixed;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .widget-list .widget-item {
+    display: inline-block;
+    list-style: none;
+    width: 50%;
+    padding: 15px 0 0 15px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .widget-list .widget-wrap{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 3px;
+    padding: 23px 15px 20px;
+    box-sizing: border-box;
+  }
+  .widget-list .widget-wrap:active{
+    background: rgba(238, 238, 238, 0.85);
+    border-radius: 3px;
+  }
+  .widget-list .icon{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url('https://os.alipayobjects.com/rmsportal/ErzQirFUtUPzGTm.png') no-repeat center;
+    background-size: 32px auto;
+  }
+  .widget-list .icon.button{
+    background-position: -1px -1px;
+  }
+
+  .widget-list .icon.list {
+    background-position: -1px -65px;
+  }
+  .widget-list .icon.message {
+    background-position: -1px -97px;
+  }
+  .widget-list .icon.notice {
+    background-position: -1px -129px;
+  }
+
+  .widget-list .icon.popmenu {
+    background-position: -1px -193px;
+  }
+  .widget-list .icon.process {
+    background-position: -1px -225px;
+  }
+
+  .widget-list .icon.search {
+    background-position: -1px -289px;
+  }
+
+  .widget-list .icon.tab {
+    background-position: -1px -321px;
+  }
+
+  .widget-list .icon.dialog {
+    background-position: -1px -33px;
+  }
+
+  .widget-list .icon.loading {
+    background-position: -1px -256px;
+  }
+
+  .widget-list .icon.page-result {
+    background-position: -1px -160px;
+  }
+
+  .widget-list .name{
+    font-size: 15px;
+    color: #000;
+    margin: 9px 0 4px;
+    line-height: 17px;
+    font-weight: 300;
+  }
+  .widget-list .info{
+    font-size: 12px;
+    color: #888;
+  }
+  .widget-demo-show-panel{
+    background: #f5f5f9;
+  }
+
+  .demo .am-button, .demo .am-tab, .demo .am-message, .demo .am-notice, .demo .am-inform{
+    margin-bottom: 21px;
+  }
+
+  .demo .am-message.multi,
+  .demo .am-button-wrap .am-button,
+  .demo .am-button-group .am-button,
+  .demo .am-button.bottom:last-child{
+    margin-bottom: 0;
+  }
+  .demo .am-button.bottom{
+    position: relative;
+  }
+
+  .demo .demo-content{
+    padding-bottom: 60px;
+  }
+
+  .demo.demo-button .demo-content:last-child,
+  .demo.demo-loading .demo-content{
+    padding-bottom: 0;
+  }
+
+  .demo-dialog .demo-content{
+    min-height: 450px;
+    background: rgba(1,1,1,0.35);
+    position: relative;
+  }
+  .demo-toast .demo-content{
+    min-height: 300px;
+    position: relative;
+  }
+  .demo-toast .am-toast{
+    position: absolute;
+  }
+  .demo-page-result .demo-content{
+    min-height: 300px;
+  }
+  .demo-header{
+    text-align: center;
+    font-size: 30px;
+    padding-top: 32px;
+    color: #108ee9;
+  }
+  .demo-header-brief{
+    text-align: center;
+    color: #888;
+    font-size: 18px;
+    padding-bottom: 32px;
+    font-weight: 300;
+  }
+  .demo-search .demo-type-title{
+    font-weight: 300;
+  }
+  .demo-search .demo-type-title,
+  .demo-notice .demo-type-title{
+    color: #888;
+    font-size: 13px;
+    padding: 60px 15px 9px;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .demo-popmenu .demo-type-title,
+  .demo-dialog .demo-type-title,
+  .demo-page-result .demo-type-title,
+  .demo-toast .demo-type-title,
+  .demo-loading .demo-type-title{
+    margin-top: 50px;
+    font-size: 15px;
+    padding: 11px 15px;
+    background-color: #3a3a3a;
+    color: #fff;
+    text-align: center;
+    position: relative;
+  }
+  .demo-loading .demo-type-title{
+    margin-top: 0;
+  }
+  .demo-carousel .demo-type-title{
+    font-size: 15px;
+    padding: 11px 15px;
+    background-color: #3a3a3a;
+    color: #fff;
+    text-align: center;
+    position: relative;
+  }
+  .demo-popmenu .demo-type-title i.dot{
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .demo-popmenu .demo-content{
+    position: relative;
+    min-height: 160px;
+  }
+  .demo-popmenu .am-popmenu-mask{
+    position: absolute;
+  }
+
+  .swiper-slide{
+    height: auto;
+    position: static;
+    display: block;
+
+  }
+
+  .button-toast{
+    margin-top: 6px;
+    width: 100px;
+    height: 20px;
+    background:#d3d3d3;
+    color:#fff;
+    font-size:12px;
+    text-align:center;
+  }
+
+  @media only screen and (min-width: 800px) {
+    .widget-list .widget-item{
+      width: 33%;
+    }
+  }
+</style>
+
+<div class="widget-list-panel" style="display: block;">
+
+  <div class="swiper-container swiper-container-vertical swiper-container-free-mode" style="position:absolute;top:0; width: 100%;">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide swiper-slide-active">
+        <div class="header">
+          <h1>AntD Mobile</h1>
+          <div class="header-info">支付宝无线 UI组件库</div>
+        </div>
+
+        <div class="widget-list ">
+
+          <div class="widget-item">
+            <a class="widget-wrap" href="#tab">
+              <i class="icon tab"></i>
+              <div class="name">标签</div>
+              <div class="info">Tab</div>
+            </a>
+          </div>
+
+          <div class="widget-item">
+            <a class="widget-wrap" href="#dialog">
+              <i class="icon dialog"></i>
+              <div class="name">对话框</div>
+              <div class="info">Dialog</div>
+            </a>
+          </div>
+
+          <div class="widget-item">
+            <a class="widget-wrap" href="#loading">
+              <i class="icon loading"></i>
+              <div class="name">加载状态</div>
+              <div class="info">Loading</div>
+            </a>
+          </div>
+
+
+          <div class="widget-item">
+            <a class="widget-wrap" href="#notice">
+              <i class="icon notice"></i>
+              <div class="name">公告</div>
+              <div class="info">Notice</div>
+            </a>
+          </div>
+
+          <div class="widget-item">
+            <a class="widget-wrap" href="#toast">
+              <i class="icon message"></i>
+              <div class="name">提示</div>
+              <div class="info">Toast</div>
+            </a>
+          </div>
+
+          <div class="widget-item">
+            <a class="widget-wrap" href="#page-result">
+              <i class="icon page-result"></i>
+              <div class="name">结果页面</div>
+              <div class="info">Page Result</div>
+            </a>
+          </div>
+
+          <div class="widget-item">
+            <a class="widget-wrap" href="#carousel">
+              <i class="icon button"></i>
+              <div class="name">图片切换</div>
+              <div class="info">Carousel</div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="swiper-scrollbar"></div>
+
+</div>
+
+<div class="widget-demo-show-panel"></div>
+
+
+
+<script type="text/html" id="tpl-carousel">
+  <div class="demo demo-carousel">
+    <div class="demo-header">图片切换</div>
+    <div class="demo-header-brief">Carousel</div>
+    <div class="demo demo-carousel">
+      <div class="demo-type-title">大图</div>
+      <div class="demo-content">
+        <div id="J_CarouselBox"></div>
+      </div>
+    </div>
+    <div class="demo demo-carousel">
+      <div class="demo-type-title">小图</div>
+      <div class="demo-content">
+        <div id="J_Carousel"></div>
+      </div>
+    </div>
+  </div>
+</script>
+<script type="text/html" id="tpl-tab">
+  <div class="demo demo-tab">
+    <div class="demo-header">标签</div>
+    <div class="demo-header-brief">Tab</div>
+
+    <div class="demo-content" id="J_TabBox">
+    </div>
+  </div>
+</script>
+
+<script type="text/html" id="tpl-toast">
+  <div class="demo demo-message">
+    <div class="demo-header">提示</div>
+    <div class="demo-header-brief">Toast</div>
+
+  <div class="demo demo-toast">
+    <div class="demo-type-title">Toast提示-纯文字 <span id="J_Toast5">点击显示</span></div>
+    <div class="demo-type-title">Toast提示-失败 <span id="J_Toast">点击显示</span></div>
+    <div class="demo-type-title">Toast提示-网络错误 <span id="J_Toast1">点击显示</span></div>
+    <div class="demo-type-title">Toast提示-成功 <span id="J_Toast2">点击显示</span></div>
+    <div class="demo-type-title">Toast提示-警示 <span id="J_Toast3">点击显示</span></div>
+    <div class="demo-type-title">Toast提示-加载中 <span id="J_Toast4">点击显示</span></div>
+  </div>
+
+  </div>
+</script>
+
+<script type="text/html" id="tpl-loading">
+  <div class="demo demo-message">
+    <div class="demo-header">加载</div>
+    <div class="demo-header-brief">Loading</div>
+    <div class="demo-content">
+      <div class="demo demo-loading">
+
+	<div class="demo-type-title">加载提示 局部loading</div>
+
+	<div class="demo-content">
+		<div id="J_Loading"></div>
+	</div>
+
+	<div class="demo-type-title">加载提示 页面loading</div>
+
+	<div class="demo-content">
+		<div id="J_PageLoading"></div>
+	</div>
+</div>
+    </div>
+  </div>
+  
+</script>
+
+<script type="text/html" id="tpl-notice">
+  <div class="demo demo-notice">
+    <div class="demo-header">公告</div>
+    <div class="demo-header-brief">Notice</div>
+
+    <div class="demo-type-title">顶部公告</div>
+    <div class="demo-content">
+      <div id="J_Notice"></div>
+      <div id="J_Notice1"></div>
+      <div id="J_Notice2"></div>
+    </div>
+
+    <div class="demo-type-title">临时通知</div>
+    <div class="demo-content">
+      <div id="J_Inform"></div>
+      <div id="J_Inform1"></div>
+      <div id="J_Inform2"></div>
+    </div>
+    <div class="demo-type-title"></div>
+  </div>
+</script>
+
+<script type="text/html" id="tpl-page-result">
+  <div class="demo demo-page-result">
+    <div class="demo-header">结果页面</div>
+    <div class="demo-header-brief">Page Result</div>
+
+    <div class="demo-type-title">本地网络超时</div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+        <div id="J_PageResult"></div>
+      </div>
+    </div>
+
+    <div class="demo-type-title">本地网络未连接</div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+         <div id="J_PageResult1"></div>
+      </div>
+    </div>
+
+    <div class="demo-type-title">系统异常或错误，且不可以重试</div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+       <div id="J_PageResult2"></div>
+      </div>
+    </div>
+
+    <div class="demo-type-title">系统异常或错误，且可以重试</div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+        <div id="J_PageResult3"></div>
+      </div>
+    </div>
+
+    <div class="demo-type-title">业务异常或出错</div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+        <div id="J_PageResult4"></div>
+      </div>
+    </div>
+
+    <div class="demo-type-title">业务异常或出错</div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+         <div id="J_PageResult5"></div>
+      </div>
+    </div>
+
+    <div class="demo-type-title">业务严重异常，需要引导的异常</div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+        <div id="J_PageResult6"></div>
+      </div>
+    </div>
+
+
+    <div class="demo-type-title">业务严重异常，需要引导的异常</div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+       <div id="J_PageResult7"></div>
+      </div>
+    </div>
+
+    <div class="demo-type-title">返回结果为空</div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+         <div id="J_PageResult8"></div>
+      </div>
+    </div>
+
+    <div class="demo-type-title">空白页</div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+        <div id="J_PageResult9"></div>
+      </div>
+    </div>
+
+    <div class="demo-type-title">404页</div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+       <div id="J_PageResult10"></div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/html" id="tpl-dialog">
+  <div class="demo demo-dialog">
+
+    <div class="demo-header">对话框</div>
+    <div class="demo-header-brief">Dialog</div>
+
+    <div class="demo-type-title">文字＋小插图 对话框 <span class="J_ShowDialog" data-index="0">点击显示</span></div>
+    <div class="demo-content">
+     
+    </div>
+
+    <div class="demo-type-title">文字＋插图 + 顶部标题 对话框 <span class="J_ShowDialog" data-index="1">点击显示</span></div>
+
+    <div class="demo-content">
+
+      <div class="demo-mobile">
+      
+      </div>
+    </div>
+
+    <div class="demo-type-title">文字＋插图 对话框 <span class="J_ShowDialog" data-index="2">点击显示</span></div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+      
+      </div>
+    </div>
+
+    <div class="demo-type-title">文字＋插图 + 协议 对话框 <span class="J_ShowDialog" data-index="3">点击显示</span></div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+       
+      </div>
+    </div>
+
+    <div class="demo-type-title">纯文字 对话框 <span class="J_ShowDialog" data-index="4">点击显示</span></div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+       
+      </div>
+    </div>
+
+    <div class="demo-type-title">只有内容 对话框 <span class="J_ShowDialog" data-index="5">点击显示</span></div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+       
+      </div>
+    </div>
+
+    <div class="demo-type-title">只有标题 对话框 <span class="J_ShowDialog" data-index="6">点击显示</span></div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+      </div>
+    </div>
+
+    <div class="demo-type-title">按钮定制 对话框 <span class="J_ShowDialog" data-index="7">点击显示</span></div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+      </div>
+    </div>
+
+    <div class="demo-type-title">按钮不可用 对话框 <span class="J_ShowDialog" data-index="8">点击显示</span></div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+      </div>
+    </div>
+
+    <div class="demo-type-title">带输入框 对话框 <span class="J_ShowDialog" data-index="9">点击显示</span></div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+      </div>
+    </div>
+
+    <div class="demo-type-title">选项卡按钮 对话框 <span class="J_ShowDialog" data-index="10">点击显示</span></div>
+
+    <div class="demo-content">
+      <div class="demo-mobile">
+  
+      </div>
+    </div>
+  </div>
+</script>
+
+
+<script src="https://as.alipayobjects.com/g/component/swiper/3.2.7/swiper.min.js"></script>
+<script src="./index.js"></script>
+
+</body>
+</html>
